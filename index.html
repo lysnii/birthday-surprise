@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#f8f4ff">
+
+<title>A Little Birthday Letter ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+
+  --bg: #f8f4ff;
+
+  --lavender: #e8def7;
+
+  --purple: #a58acb;
+
+  --deep: #5d4b70;
+
+  --muted: #9788a6;
+
+  --white: #fffdfd;
+
+  --border: #e9dff4;
+
+}
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  color: var(--deep);
+
+  background:
+
+    radial-gradient(ellipse at 50% 0%,
+
+      #eee5ff 0%, transparent 55%),
+
+    var(--bg);
+
+  font-family: 'DM Sans', sans-serif;
+
+  font-weight: 300;
+
+}
+
+button {
+
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+main {
+
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  max-width: 510px;
+
+  margin: 0 auto;
+
+  padding: 54px 23px 32px;
+
+  text-align: center;
+
+}
+
+.top-icon {
+
+  font-size: 23px;
+
+  color: var(--purple);
+
+  margin-bottom: 24px;
+
+}
+
+.eyebrow {
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: var(--muted);
+
+  line-height: 2;
+
+}
+
+h1, h2, .serif {
+
+  font-family: 'Cormorant Garamond', Georgia, serif;
+
+  font-weight: 400;
+
+}
+
+h1 {
+
+  margin: 20px 0 12px;
+
+  font-size: clamp(48px, 13vw, 69px);
+
+  line-height: .98;
+
+  letter-spacing: -1px;
+
+}
+
+h1 span {
+
+  color: var(--purple);
+
+  font-style: italic;
+
+}
+
+.subtitle {
+
+  font-size: 11px;
+
+  line-height: 2;
+
+  color: var(--muted);
+
+  letter-spacing: .6px;
+
+}
+
+.divider {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  margin: 27px 0;
+
+  color: var(--purple);
+
+  font-size: 12px;
+
+}
+
+.divider::before,
+
+.divider::after {
+
+  content: "";
+
+  width: 48px;
+
+  height: 1px;
+
+  background: #d9c9ec;
+
+}
+
+.card {
+
+  margin: 27px auto;
+
+  padding: 30px 22px;
+
+  border: 1px solid #ffffff;
+
+  outline: 1px solid var(--border);
+
+  outline-offset: -7px;
+
+  border-radius: 5px;
+
+  background: #fffdfdbf;
+
+  box-shadow: 0 18px 50px #c7b4e41c;
+
+}
+
+.card-heading {
+
+  font-size: 9px;
+
+  letter-spacing: 2.5px;
+
+  color: var(--muted);
+
+  text-transform: uppercase;
+
+}
+
+.envelope-wrap {
+
+  margin: 23px auto 17px;
+
+  width: 112px;
+
+  height: 94px;
+
+  display: grid;
+
+  place-items: center;
+
+}
+
+.envelope {
+
+  position: relative;
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 72px;
+
+  line-height: 1;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  filter: drop-shadow(0 8px 8px #a58acb22);
+
+  transition: transform .3s ease;
+
+  animation: gentleFloat 3s ease-in-out infinite;
+
+}
+
+.envelope:active {
+
+  transform: scale(.94);
+
+}
+
+.tap-note {
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+}
+
+button.action {
+
+  display: inline-block;
+
+  border: 1px solid #d5c3e9;
+
+  border-radius: 30px;
+
+  background: var(--white);
+
+  color: var(--deep);
+
+  padding: 13px 19px;
+
+  margin: 8px 3px;
+
+  font-family: 'DM Sans', sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition: background .25s, transform .25s;
+
+}
+
+button.action:active {
+
+  transform: scale(.97);
+
+}
+
+button.primary {
+
+  background: var(--purple);
+
+  border-color: var(--purple);
+
+  color: white;
+
+}
+
+button.primary:hover {
+
+  background: #9073b9;
+
+}
+
+button.secondary:hover {
+
+  background: var(--lavender);
+
+}
+
+#letter, #surprise {
+
+  display: none;
+
+  animation: fadeIn .9s ease both;
+
+}
+
+#letter {
+
+  border-top: 1px solid var(--border);
+
+  margin-top: 25px;
+
+  padding-top: 23px;
+
+}
+
+#letter h2 {
+
+  font-size: 37px;
+
+  margin: 0 0 17px;
+
+  color: #9478ba;
+
+}
+
+.message {
+
+  font-size: 12px;
+
+  line-height: 2.15;
+
+  color: #71617f;
+
+  font-weight: 300;
+
+}
+
+#surprise {
+
+  border-top: 1px solid var(--border);
+
+  margin-top: 25px;
+
+  padding-top: 25px;
+
+}
+
+#surprise .big-heart {
+
+  font-size: 31px;
+
+  animation: heartbeat 1.3s ease-in-out infinite;
+
+}
+
+#surprise h2 {
+
+  font-size: 42px;
+
+  color: #9478ba;
+
+  margin: 12px 0;
+
+}
+
+#surprise p {
+
+  font-size: 12px;
+
+  line-height: 2;
+
+  color: #71617f;
+
+}
+
+.music-status {
+
+  font-size: 10px;
+
+  color: var(--muted);
+
+  margin-top: 6px;
+
+  min-height: 15px;
+
+}
+
+footer {
+
+  margin-top: 38px;
+
+  font-size: 9px;
+
+  color: #a395b0;
+
+  letter-spacing: 2px;
+
+  line-height: 2.3;
+
+}
+
+footer .tiny {
+
+  font-size: 15px;
+
+  color: var(--purple);
+
+  margin-top: 12px;
+
+}
+
+.sparkle {
+
+  position: fixed;
+
+  left: 0;
+
+  bottom: -20px;
+
+  pointer-events: none;
+
+  z-index: 5;
+
+  color: #a58acb;
+
+  text-shadow: 0 0 10px #cdb9f5;
+
+  animation: floatUp 4s ease-out forwards;
+
+}
+
+@keyframes gentleFloat {
+
+  0%, 100% { transform: translateY(0); }
+
+  50% { transform: translateY(-6px); }
+
+}
+
+@keyframes fadeIn {
+
+  from { opacity: 0; transform: translateY(12px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+@keyframes floatUp {
+
+  0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+
+  15% { opacity: .9; }
+
+  100% {
+
+    opacity: 0;
+
+    transform: translateY(-85vh) rotate(45deg);
+
+  }
+
+}
+
+@keyframes heartbeat {
+
+  0%, 100% { transform: scale(1); }
+
+  50% { transform: scale(1.12); }
+
+}
+
+@media (max-width: 380px) {
+
+  main {
+
+    padding: 40px 17px 25px;
+
+  }
+
+  .card {
+
+    padding: 27px 17px;
+
+  }
+
+  h1 {
+
+    font-size: 48px;
+
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *, *::before, *::after {
+
+    animation-duration: .01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+  <div class="top-icon">✧</div>
+
+  <div class="eyebrow">
+
+    A little celebration of you
+
+  </div>
+
+  <h1>Happy<br><span>Birthday.</span></h1>
+
+  <p class="subtitle">
+
+    A little gift made with love,<br>
+
+    especially for someone special.
+
+  </p>
+
+  <div class="divider">♡</div>
+
+  <section class="card">
+
+    <div class="card-heading">
+
+      A little letter for you
+
+    </div>
+
+    <div class="envelope-wrap">
+
+      <button class="envelope"
+
+        id="envelope"
+
+        aria-label="Open birthday letter"
+
+        aria-expanded="false"
+
+        onclick="openLetter()">✉</button>
+
+    </div>
+
+    <p class="tap-note" id="tapNote">
+
+      A LETTER IS WAITING FOR YOU
+
+    </p>
+
+    <div id="letter">
+
+      <h2>Dear Bestie,</h2>
+
+      <div class="message">
+
+        Happy birthday to you. ♡
+
+        <br><br>
+
+        I'm so grateful that this world
+
+        brought someone like you into my life.
+
+        Thank you for the laughter, the memories,
+
+        and all the little moments that
+
+        have become special to me.
+
+        <br><br>
+
+        I hope this new chapter of your life
+
+        is filled with gentle days, genuine love,
+
+        beautiful opportunities, and happiness
+
+        that stays for a long, long time.
+
+        <br><br>
+
+        Even when life gets difficult,
+
+        I hope you never forget how precious
+
+        you are and how much you matter.
+
+        <br><br>
+
+        May all the good things you wish for
+
+        slowly find their way to you.
+
+        You deserve a life that feels beautiful.
+
+        <br><br>
+
+        Thank you for being you.
+
+        I'm always wishing the best for you.
+
+        <br><br>
+
+        With love, always. ♡
+
+      </div>
+
+      <div class="divider">✧</div>
+
+      <button class="action primary"
+
+        onclick="showSurprise()">
+
+        One last surprise ♡
+
+      </button>
+
+    </div>
+
+    <div id="surprise">
+
+      <div class="big-heart">♡</div>
+
+      <h2>You are loved.</h2>
+
+      <p>
+
+        If you ever forget how special you are,
+
+        let this little reminder find you again.
+
+        <br><br>
+
+        The world is a little more beautiful
+
+        because you're in it.
+
+        <br><br>
+
+        Here's to another lovely chapter of you.
+
+      </p>
+
+      <div class="divider">✧ ♡ ✧</div>
+
+      <div class="eyebrow">Make a wish, birthday soul</div>
+
+    </div>
+
+  </section>
+
+  <div>
+
+    <button class="action secondary"
+
+      onclick="makeAWish()">
+
+      ✧ Make a wish
+
+    </button>
+
+    <button class="action secondary"
+
+      id="musicButton"
+
+      onclick="toggleMusic()">
+
+      ♫ Play music
+
+    </button>
+
+  </div>
+
+  <p class="music-status" id="musicStatus">
+
+    A little melody for your special day
+
+  </p>
+
+  <footer>
+
+    MADE WITH LOVE<br>
+
+    JUST FOR YOU
+
+    <div class="tiny">✧ ♡ ✧</div>
+
+  </footer>
+
+</main>
+
+<audio id="song" loop preload="none">
+
+  <!-- Replace the empty URL with a direct audio file URL -->
+
+  <source src="" type="audio/mpeg">
+
+</audio>
+
+<script>
+
+let letterOpened = false;
+
+let surpriseOpened = false;
+
+function openLetter() {
+
+  const letter = document.getElementById('letter');
+
+  const envelope = document.getElementById('envelope');
+
+  letter.style.display = 'block';
+
+  envelope.setAttribute('aria-expanded', 'true');
+
+  document.getElementById('tapNote').textContent =
+
+    'A LITTLE MESSAGE, JUST FOR YOU ♡';
+
+  if (!letterOpened) {
+
+    letterOpened = true;
+
+    makeSparkles(20);
+
+  }
+
+  setTimeout(() => {
+
+    letter.scrollIntoView({
+
+      behavior: 'smooth',
+
+      block: 'nearest'
+
+    });
+
+  }, 150);
+
+}
+
+function showSurprise() {
+
+  const surprise = document.getElementById('surprise');
+
+  surprise.style.display = 'block';
+
+  if (!surpriseOpened) {
+
+    surpriseOpened = true;
+
+    makeSparkles(35);
+
+  }
+
+  setTimeout(() => {
+
+    surprise.scrollIntoView({
+
+      behavior: 'smooth',
+
+      block: 'nearest'
+
+    });
+
+  }, 150);
+
+}
+
+function makeSparkles(amount = 20) {
+
+  const symbols = ['✧', '✦', '♡', '⋆', '✩'];
+
+  for (let i = 0; i < amount; i++) {
+
+    const sparkle = document.createElement('span');
+
+    sparkle.className = 'sparkle';
+
+    sparkle.textContent =
+
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    sparkle.style.left = Math.random() * 100 + 'vw';
+
+    sparkle.style.fontSize =
+
+      (10 + Math.random() * 17) + 'px';
+
+    sparkle.style.animationDelay =
+
+      (Math.random() * 1.5) + 's';
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 5500);
+
+  }
+
+}
+
+function makeAWish() {
+
+  makeSparkles(30);
+
+}
+
+async function toggleMusic() {
+
+  const song = document.getElementById('song');
+
+  const button = document.getElementById('musicButton');
+
+  const status = document.getElementById('musicStatus');
+
+  const source = song.querySelector('source');
+
+  if (!source.getAttribute('src') ||
+
+      !source.getAttribute('src').trim()) {
+
+    status.textContent =
+
+      'Add your music file URL to enable playback ♡';
+
+    return;
+
+  }
+
+  if (song.paused) {
+
+    try {
+
+      await song.play();
+
+      button.textContent = '♫ Pause music';
+
+      status.textContent = 'Now playing for you ♡';
+
+    } catch (error) {
+
+      status.textContent =
+
+        'Could not play the music. Check the audio URL.';
+
+    }
+
+  } else {
+
+    song.pause();
+
+    button.textContent = '♫ Play music';
+
+    status.textContent = 'Music paused ♡';
+
+  }
+
+}
+
+</script>
+
+</body>
+
+</html>
